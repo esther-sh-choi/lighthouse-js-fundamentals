@@ -1,4 +1,4 @@
-function multiply(a, b) {
+/* function multiply(a, b) {
   return a * b;
 }
 
@@ -50,11 +50,11 @@ const merge = (arr1, arr2) => {
 console.log(merge([4, 5, 6], [1, 2, 3, 4]), "=?", [1, 2, 3, 4, 4, 5, 6]);
 console.log(merge([4], [2, 5, 8]), "=?", [2, 4, 5, 8]);
 console.log(merge([1, 2, 6], []), "=?", [1, 2, 6]);
-console.log(merge([1, 2, 5, 8], [9]));
+console.log(merge([1, 2, 5, 8], [9])); 
 
 /* ---------------------------------------------------------------- */
 
-const judgeVegetable = function (vegetables, metric) {
+/* const judgeVegetable = function (vegetables, metric) {
   let bestIndex = 0;
   for (let i = 1; i < vegetables.length; i++) {
     if (vegetables[i][metric] > vegetables[bestIndex][metric]) {
@@ -84,4 +84,36 @@ const vegetables = [
 
 const metric = "redness";
 
-judgeVegetable(vegetables, metric);
+judgeVegetable(vegetables, metric);*/
+
+/* ---------------------------------------------------------------- */
+
+/*const sumLargestNumbers = function (numbers) {
+  let numbersCopy = numbers.slice();
+  let largestIndex = 0;
+
+  const helperIndexOfLargestNum = (array) => {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] > array[largestIndex]) {
+        largestIndex = i;
+      }
+    }
+    return largestIndex;
+  };
+
+  largestIndex = helperIndexOfLargestNum(numbersCopy);
+  let largestNum1 = numbersCopy[largestIndex];
+
+  numbersCopy.splice(largestIndex, 1);
+  largestIndex = 0;
+
+  largestIndex = helperIndexOfLargestNum(numbersCopy);
+  let largestNum2 = numbersCopy[largestIndex];
+
+  return largestNum1 + largestNum2;
+};
+
+console.log(sumLargestNumbers([1, 10]));
+console.log(sumLargestNumbers([1, 2, 3]));
+console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]));
+*/
