@@ -88,32 +88,27 @@ judgeVegetable(vegetables, metric);*/
 
 /* ---------------------------------------------------------------- */
 
-/*const sumLargestNumbers = function (numbers) {
+const sumLargestNumbers = function (numbers) {
   let numbersCopy = numbers.slice();
-  let largestIndex = 0;
+  let sum = 0;
 
   const helperIndexOfLargestNum = (array) => {
-    for (let i = 0; i < array.length; i++) {
+    let largestIndex = 0;
+    for (let i = 1; i < array.length; i++) {
       if (array[i] > array[largestIndex]) {
         largestIndex = i;
       }
     }
-    return largestIndex;
+    sum += array[largestIndex];
+    array.splice(largestIndex, 1);
   };
 
-  largestIndex = helperIndexOfLargestNum(numbersCopy);
-  let largestNum1 = numbersCopy[largestIndex];
+  helperIndexOfLargestNum(numbersCopy);
+  helperIndexOfLargestNum(numbersCopy);
 
-  numbersCopy.splice(largestIndex, 1);
-  largestIndex = 0;
-
-  largestIndex = helperIndexOfLargestNum(numbersCopy);
-  let largestNum2 = numbersCopy[largestIndex];
-
-  return largestNum1 + largestNum2;
+  return sum;
 };
 
 console.log(sumLargestNumbers([1, 10]));
 console.log(sumLargestNumbers([1, 2, 3]));
 console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]));
-*/
