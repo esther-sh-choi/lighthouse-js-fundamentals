@@ -88,6 +88,7 @@ judgeVegetable(vegetables, metric);*/
 
 /* ---------------------------------------------------------------- */
 
+/*
 const sumLargestNumbers = function (numbers) {
   let numbersCopy = numbers.slice();
   let sum = 0;
@@ -112,3 +113,25 @@ const sumLargestNumbers = function (numbers) {
 console.log(sumLargestNumbers([1, 10]));
 console.log(sumLargestNumbers([1, 2, 3]));
 console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]));
+*/
+
+/*
+const conditionalSum = function (integers, oddOrEven) {
+  let sum = 0;
+
+  for (let integer of integers) {
+    if (oddOrEven === "odd" && integer % 2 === 1) {
+      sum += integer;
+    } else if (oddOrEven === "even" && integer % 2 === 0) {
+      sum += integer;
+    }
+  }
+
+  return sum;
+};
+
+console.log(conditionalSum([1, 2, 3, 4, 5], "even"));
+console.log(conditionalSum([1, 2, 3, 4, 5], "odd"));
+console.log(conditionalSum([13, 88, 12, 44, 99], "even"));
+console.log(conditionalSum([], "odd"));
+*/
