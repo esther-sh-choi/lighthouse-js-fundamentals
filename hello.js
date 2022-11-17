@@ -11,3 +11,11 @@ const sayHelloName = function (name) {
 sayHelloName("Caliban");
 sayHelloName("Miranda");
 sayHelloName("Ferdinand");
+
+/*------------- Differenc between console.log and return --------------*/
+
+const returnSayHello = function (name) {
+  return "Hello, " + name;
+};
+const greeting = returnSayHello("John");
+console.log(greeting);
