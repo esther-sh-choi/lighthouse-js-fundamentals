@@ -51,3 +51,37 @@ console.log(merge([4, 5, 6], [1, 2, 3, 4]), "=?", [1, 2, 3, 4, 4, 5, 6]);
 console.log(merge([4], [2, 5, 8]), "=?", [2, 4, 5, 8]);
 console.log(merge([1, 2, 6], []), "=?", [1, 2, 6]);
 console.log(merge([1, 2, 5, 8], [9]));
+
+/* ---------------------------------------------------------------- */
+
+const judgeVegetable = function (vegetables, metric) {
+  let bestIndex = 0;
+  for (let i = 1; i < vegetables.length; i++) {
+    if (vegetables[i][metric] > vegetables[bestIndex][metric]) {
+      bestIndex = i;
+    }
+  }
+  return vegetables[bestIndex].submitter;
+};
+
+const vegetables = [
+  {
+    submitter: "Old Man Franklin",
+    redness: 10,
+    plumpness: 5,
+  },
+  {
+    submitter: "Sally Tomato-Grower",
+    redness: 2,
+    plumpness: 8,
+  },
+  {
+    submitter: "Hamid Hamidson",
+    redness: 4,
+    plumpness: 3,
+  },
+];
+
+const metric = "redness";
+
+judgeVegetable(vegetables, metric);
