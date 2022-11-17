@@ -22,3 +22,32 @@ const loopyLighthouse = (range, multiples, words) => {
 };
 
 loopyLighthouse([15, 90], [2, 5], ["Batty", "Beacon"]);
+
+const merge = (arr1, arr2) => {
+  let i = 0;
+  let j = 0;
+  let mergedArray = [];
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] <= arr2[j]) {
+      mergedArray.push(arr1[i]);
+      i++;
+    } else if (arr1[i] > arr2[j]) {
+      mergedArray.push(arr2[j]);
+      j++;
+    }
+  }
+
+  if (i < arr1.length) {
+    mergedArray.push(...arr1.slice(i));
+  } else if (j < arr2.length) {
+    mergedArray.push(...arr2.slice(j));
+  }
+
+  return mergedArray;
+};
+
+console.log(merge([4, 5, 6], [1, 2, 3, 4]), "=?", [1, 2, 3, 4, 4, 5, 6]);
+console.log(merge([4], [2, 5, 8]), "=?", [2, 4, 5, 8]);
+console.log(merge([1, 2, 6], []), "=?", [1, 2, 6]);
+console.log(merge([1, 2, 5, 8], [9]));
