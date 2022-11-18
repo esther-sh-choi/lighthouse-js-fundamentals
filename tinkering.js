@@ -271,6 +271,7 @@ console.log(
 );
 */
 
+/*
 const checkAir = function (samples, threshold) {
   let numClean = 0;
   let numDirty = 0;
@@ -304,4 +305,45 @@ console.log(checkAir(["dirty", "dirty", "dirty", "dirty", "clean"], 0.25));
 
 console.log(
   checkAir(["clean", "dirty", "clean", "dirty", "clean", "dirty", "clean"], 0.9)
+);
+*/
+
+const repeatNumbers = function (data) {
+  const repeatNumbersHelper = (number, repeat) => {
+    let repeatedNumber = "";
+    for (let i = 0; i < repeat; i++) {
+      repeatedNumber += number;
+    }
+    return repeatedNumber;
+  };
+
+  let renderedData = "";
+  for (let dataIndex = 0; dataIndex < data.length; dataIndex++) {
+    if (!renderedData) {
+      renderedData += repeatNumbersHelper(
+        data[dataIndex][0],
+        data[dataIndex][1]
+      );
+    } else {
+      renderedData +=
+        ", " + repeatNumbersHelper(data[dataIndex][0], data[dataIndex][1]);
+    }
+  }
+
+  return renderedData;
+};
+
+console.log(repeatNumbers([[1, 10]]));
+console.log(
+  repeatNumbers([
+    [1, 2],
+    [2, 3],
+  ])
+);
+console.log(
+  repeatNumbers([
+    [10, 4],
+    [34, 6],
+    [92, 2],
+  ])
 );
