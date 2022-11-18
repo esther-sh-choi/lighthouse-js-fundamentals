@@ -350,6 +350,7 @@ console.log(
 );
 */
 
+/*
 const camelCase = function (input) {
   const inputArr = input.split(" ").map((word, idx) => {
     if (idx > 0) {
@@ -364,3 +365,23 @@ const camelCase = function (input) {
 console.log(camelCase("this is a string"));
 console.log(camelCase("loopy lighthouse"));
 console.log(camelCase("supercalifragalisticexpialidocious"));
+*/
+
+const multiplicationTable = function (maxValue) {
+  let rows = "";
+  for (let j = 1; j <= maxValue; j++) {
+    if (j > 1) {
+      rows += "\n";
+    }
+
+    for (let i = 1; i <= maxValue; i++) {
+      rows += i === 1 ? i * j : " " + i * j;
+    }
+  }
+
+  return rows;
+};
+
+console.log(multiplicationTable(1));
+console.log(multiplicationTable(5));
+console.log(multiplicationTable(10));
