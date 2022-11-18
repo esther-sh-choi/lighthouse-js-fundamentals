@@ -308,6 +308,7 @@ console.log(
 );
 */
 
+/*
 const repeatNumbers = function (data) {
   const repeatNumbersHelper = (number, repeat) => {
     let repeatedNumber = "";
@@ -347,3 +348,19 @@ console.log(
     [92, 2],
   ])
 );
+*/
+
+const camelCase = function (input) {
+  const inputArr = input.split(" ").map((word, idx) => {
+    if (idx > 0) {
+      return word[0].toUpperCase() + word.slice(1);
+    }
+    return word;
+  });
+
+  return inputArr.join("");
+};
+
+console.log(camelCase("this is a string"));
+console.log(camelCase("loopy lighthouse"));
+console.log(camelCase("supercalifragalisticexpialidocious"));
