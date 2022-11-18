@@ -135,3 +135,71 @@ console.log(conditionalSum([1, 2, 3, 4, 5], "odd"));
 console.log(conditionalSum([13, 88, 12, 44, 99], "even"));
 console.log(conditionalSum([], "odd"));
 */
+
+/*
+const numberOfVowels = function (string) {
+  let vowelCount = 0;
+  let vowels = ["a", "e", "i", "o", "u"];
+
+  for (let i = 0; i < string.length; i++) {
+    vowelCount += vowels.includes(string[i]) ? 1 : 0;
+  }
+  return vowelCount;
+};
+
+console.log(numberOfVowels("orange"));
+console.log(numberOfVowels("lighthouse labs"));
+console.log(numberOfVowels("aeiou"));
+*/
+
+/*
+const instructorWithLongestName = function (instructors) {
+  let longestNameIndex = 0;
+  for (let i = 0; i < instructors.length; i++) {
+    if (
+      instructors[i].name.length > instructors[longestNameIndex].name.length
+    ) {
+      longestNameIndex = i;
+    }
+  }
+  return instructors[longestNameIndex];
+};
+
+console.log(
+  instructorWithLongestName([
+    { name: "Samuel", course: "iOS" },
+    { name: "Jeremiah", course: "Web" },
+    { name: "Ophilia", course: "Web" },
+    { name: "Donald", course: "Web" },
+  ])
+);
+console.log(
+  instructorWithLongestName([
+    { name: "Matthew", course: "Web" },
+    { name: "David", course: "iOS" },
+    { name: "Domascus", course: "Web" },
+  ])
+);
+*/
+
+/*
+const urlEncode = function (text) {
+  let newText = text.trim();
+  let counter = 0;
+
+  while (counter < newText.length) {
+    if (/\s/.test(newText[counter])) {
+      newText = newText.slice(0, counter) + "%20" + newText.slice(counter + 1);
+      counter += 3;
+    } else {
+      counter++;
+    }
+  }
+
+  return newText;
+};
+
+console.log(urlEncode("Lighthouse Labs"));
+console.log(urlEncode(" Lighthouse Labs "));
+console.log(urlEncode("blue is greener than purple for sure"));
+*/
