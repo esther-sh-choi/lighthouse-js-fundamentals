@@ -443,6 +443,7 @@ const duck = [largeSphere, smallSphere, cone];
 console.log(272000 < totalVolume(duck) && totalVolume(duck) < 275000);
 */
 
+/*
 const chooseRecipe = function (bakeryA, bakeryB, recipes) {
   for (let recipe of recipes) {
     if (
@@ -493,3 +494,60 @@ recipes = [
 ];
 
 console.log(chooseRecipe(bakeryA, bakeryB, recipes));
+*/
+
+const getLongMonthOptionOne = (date) => {
+  const options = { month: "long" };
+  const newDate = new Date(date);
+  const month = new Intl.DateTimeFormat("en-US", options).format(newDate);
+  return month;
+};
+
+const getLongMonthOptionTwo = (month) => {
+  const monthIndex = Number(month) - 1;
+  const monthList = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return monthList[monthIndex];
+};
+
+const getDay = (day) => {
+  let removeZero = Number(day).toString();
+  if (day === "11" || day === "12" || day === "13") {
+    removeZero += "th";
+  } else if (day[1] === "1") {
+    removeZero += "st";
+  } else if (day[1] === "2") {
+    removeZero += "nd";
+  } else if (day[1] === "3") {
+    removeZero += "rd";
+  } else {
+    removeZero += "th";
+  }
+  return removeZero;
+};
+
+const talkingCalendar = function (date) {
+  const dateArr = date.split("/");
+  const month = getLongMonthOptionOne(date);
+  // const month = getLongMonthOptionTwo(dateArr[1]);
+  const day = getDay(dateArr[2]);
+  const year = dateArr[0];
+
+  return `${month} ${day}, ${year}`;
+};
+
+console.log(talkingCalendar("2017/12/02"));
+console.log(talkingCalendar("2007/11/11"));
+console.log(talkingCalendar("1987/08/24"));
