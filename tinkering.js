@@ -631,6 +631,7 @@ console.log(
 );
 */
 
+/*
 const makeCase = function (input, casings) {
   const toCamelCase = (input) => {
     const inputArr = input.split(" ").map((word, idx) => {
@@ -733,3 +734,29 @@ console.log(makeCase("this is a string", "title"));
 console.log(makeCase("this is a string", "vowel"));
 console.log(makeCase("this is a string", "consonant"));
 console.log(makeCase("this is a string", ["upper", "snake"]));
+*/
+
+const urlDecode = function (text) {
+  let keyValueArray = text.split("&");
+
+  for (let i = 0; i < keyValueArray.length; i++) {
+    keyValueArray[i] = keyValueArray[i].split("=");
+  }
+
+  for (let j = 0; j < keyValueArray.length; j++) {
+    keyValueArray[j][1] = keyValueArray[j][1].split("%20").join(" ");
+  }
+
+  const keyValueObj = {};
+
+  for (let keyValue of keyValueArray) {
+    keyValueObj[keyValue[0]] = keyValue[1];
+  }
+
+  return keyValueObj;
+};
+
+console.log(urlDecode("duck=rubber"));
+console.log(urlDecode("bootcamp=Lighthouse%20Labs"));
+console.log(urlDecode("city=Vancouver&weather=lots%20of%20rain"));
+console.log(urlDecode("city=Vancouver&weather=lots%20of%20rain").weather);
