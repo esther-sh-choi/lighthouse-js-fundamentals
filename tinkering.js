@@ -554,6 +554,7 @@ console.log(talkingCalendar("2007/11/11"));
 console.log(talkingCalendar("1987/08/24"));
 */
 
+/*
 const calculateChange = function (total, cash) {
   let change = cash - total;
   let changeObject = {};
@@ -595,3 +596,35 @@ const calculateChange = function (total, cash) {
 console.log(calculateChange(1787, 2000));
 console.log(calculateChange(2623, 4000));
 console.log(calculateChange(501, 1000));
+*/
+
+const organizeInstructors = function (instructors) {
+  let organizeByCourse = {};
+
+  for (let instructor of instructors) {
+    if (!organizeByCourse[instructor.course]) {
+      organizeByCourse[instructor.course] = [instructor.name];
+    } else {
+      organizeByCourse[instructor.course].push(instructor.name);
+    }
+  }
+
+  return organizeByCourse;
+};
+
+console.log(
+  organizeInstructors([
+    { name: "Samuel", course: "iOS" },
+    { name: "Victoria", course: "Web" },
+    { name: "Karim", course: "Web" },
+    { name: "Donald", course: "Web" },
+  ])
+);
+console.log(
+  organizeInstructors([
+    { name: "Brendan", course: "Blockchain" },
+    { name: "David", course: "Web" },
+    { name: "Martha", course: "iOS" },
+    { name: "Carlos", course: "Web" },
+  ])
+);
