@@ -763,6 +763,7 @@ console.log(urlDecode("city=Vancouver&weather=lots%20of%20rain"));
 console.log(urlDecode("city=Vancouver&weather=lots%20of%20rain").weather);
 */
 
+/*
 const squareCode = function (message) {
   const noSpaceMessage = message.replace(/ /g, "");
   const column = Math.ceil(Math.sqrt(noSpaceMessage.length));
@@ -800,3 +801,90 @@ console.log(
     "if man was meant to stay on the ground god would have given us roots"
   )
 );
+*/
+
+//Replace coordinates with any other value 0-8
+let whiteQueen = [1, 5];
+let blackQueen = [2, 3];
+
+let generatedBoard = (whiteQueen, blackQueen) => {
+  let board = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+  ];
+
+  board[whiteQueen[0]][whiteQueen[1]] = 1;
+  board[blackQueen[0]][blackQueen[1]] = 1;
+  return board;
+};
+
+const queenThreat = (board) => {
+  let queenPositions = [];
+  for (let row = 0; row < 8; row++) {
+    for (let column = 0; column < 8; column++) {
+      if (board[row][column] === 1) {
+        queenPositions.push([row, column]);
+      }
+    }
+  }
+
+  const anotherQueenIsDiagonal = (x, y) => {
+    let upLeft = [x - 1, y - 1];
+    let upRight = [x - 1, y + 1];
+    let downLeft = [x + 1, y - 1];
+    let downRight = [x + 1, y + 1];
+
+    while (upLeft[0] >= 0 && upLeft[1] >= 0) {
+      if (board[upLeft[0]][upLeft[1]] === 1) {
+        return true;
+      }
+      upLeft[0]--;
+      upLeft[1]--;
+    }
+
+    while (upRight[0] >= 0 && upRight[1] < 8) {
+      if (board[upRight[0]][upRight[1]] === 1) {
+        return true;
+      }
+      upRight[0]--;
+      upRight[1]++;
+    }
+
+    while (downLeft[0] < 8 && downLeft[1] >= 0) {
+      if (board[downLeft[0]][downLeft[1]] === 1) {
+        return true;
+      }
+      downLeft[0]++;
+      downLeft[1]--;
+    }
+
+    while (downRight[0] < 8 && downRight[1] < 8) {
+      if (board[downRight[0]][downRight[1]] === 1) {
+        return true;
+      }
+      downRight[0]++;
+      downRight[1]++;
+    }
+
+    return false;
+  };
+
+  if (queenPositions[0][0] === queenPositions[1][0]) {
+    // If queens are in the same row
+    return true;
+  } else if (queenPositions[0][1] === queenPositions[1][1]) {
+    // If queens are in the same column
+    return true;
+  }
+
+  // Can use either queenPositions[0] or queenPositions[1]
+  return anotherQueenIsDiagonal(queenPositions[0][0], queenPositions[0][1]);
+};
+
+console.log(queenThreat(generatedBoard(whiteQueen, blackQueen)));
