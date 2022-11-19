@@ -736,6 +736,7 @@ console.log(makeCase("this is a string", "consonant"));
 console.log(makeCase("this is a string", ["upper", "snake"]));
 */
 
+/*
 const urlDecode = function (text) {
   let keyValueArray = text.split("&");
 
@@ -760,3 +761,42 @@ console.log(urlDecode("duck=rubber"));
 console.log(urlDecode("bootcamp=Lighthouse%20Labs"));
 console.log(urlDecode("city=Vancouver&weather=lots%20of%20rain"));
 console.log(urlDecode("city=Vancouver&weather=lots%20of%20rain").weather);
+*/
+
+const squareCode = function (message) {
+  const noSpaceMessage = message.replace(/ /g, "");
+  const column = Math.ceil(Math.sqrt(noSpaceMessage.length));
+
+  const squareArr = [];
+  let start = 0;
+  let end = column;
+
+  while (end < noSpaceMessage.length + column) {
+    squareArr.push(noSpaceMessage.slice(start, end));
+    start += column;
+    end += column;
+  }
+
+  const rotateSquare = [];
+
+  for (let j = 0; j < column; j++) {
+    let word = "";
+    for (let i = 0; i < squareArr.length; i++) {
+      if (squareArr[i][j]) {
+        word += squareArr[i][j];
+      }
+    }
+    rotateSquare.push(word);
+  }
+
+  return rotateSquare;
+};
+
+console.log(squareCode("chill out"));
+console.log(squareCode("feed the dog"));
+console.log(squareCode("have a nice day"));
+console.log(
+  squareCode(
+    "if man was meant to stay on the ground god would have given us roots"
+  )
+);
