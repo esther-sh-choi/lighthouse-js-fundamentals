@@ -598,6 +598,7 @@ console.log(calculateChange(2623, 4000));
 console.log(calculateChange(501, 1000));
 */
 
+/*
 const organizeInstructors = function (instructors) {
   let organizeByCourse = {};
 
@@ -628,3 +629,107 @@ console.log(
     { name: "Carlos", course: "Web" },
   ])
 );
+*/
+
+const makeCase = function (input, casings) {
+  const toCamelCase = (input) => {
+    const inputArr = input.split(" ").map((word, idx) => {
+      if (idx > 0) {
+        return word[0].toUpperCase() + word.slice(1);
+      }
+      return word;
+    });
+    return inputArr.join("");
+  };
+
+  const toPascalCase = (input) => {
+    const inputArr = input.split(" ").map((word) => {
+      return word[0].toUpperCase() + word.slice(1);
+    });
+    return inputArr.join("");
+  };
+
+  const toSnakeCase = (input) => {
+    return input.split(" ").join("_");
+  };
+
+  const toKebabCase = (input) => {
+    return input.split(" ").join("-");
+  };
+
+  const toTitleCase = (input) => {
+    const inputArr = input.split(" ").map((word) => {
+      return word[0].toUpperCase() + word.slice(1);
+    });
+    return inputArr.join(" ");
+  };
+
+  const toVowelCase = (input) => {
+    const vowels = ["a", "e", "i", "o", "u"];
+    let strCopy = input.slice();
+    for (let i = 0; i < input.length; i++) {
+      if (vowels.includes(input[i])) {
+        strCopy =
+          strCopy.slice(0, i) + strCopy[i].toUpperCase() + strCopy.slice(i + 1);
+      }
+    }
+    return strCopy;
+  };
+
+  const toConsonantCase = (input) => {
+    const vowels = ["a", "e", "i", "o", "u"];
+    let strCopy = input.slice();
+    for (let i = 0; i < input.length; i++) {
+      if (!vowels.includes(input[i])) {
+        strCopy =
+          strCopy.slice(0, i) + strCopy[i].toUpperCase() + strCopy.slice(i + 1);
+      }
+    }
+    return strCopy;
+  };
+
+  const toUpperCase = (input) => {
+    return input.toUpperCase();
+  };
+
+  const casingOptions = [
+    { type: "camel", method: toCamelCase },
+    { type: "pascal", method: toPascalCase },
+    { type: "snake", method: toSnakeCase },
+    { type: "kebab", method: toKebabCase },
+    { type: "title", method: toTitleCase },
+    { type: "vowel", method: toVowelCase },
+    { type: "consonant", method: toConsonantCase },
+    { type: "upper", method: toUpperCase },
+  ];
+
+  // More than one case type
+  if (typeof casings === "object") {
+    for (let casing of casings) {
+      casingOptions.forEach((option) => {
+        if (option.type === casing) {
+          input = option.method(input);
+        }
+      });
+    }
+    return input;
+  }
+
+  // One case type
+  casingOptions.forEach((option) => {
+    if (option.type === casings) {
+      input = option.method(input);
+    }
+  });
+
+  return input;
+};
+
+console.log(makeCase("this is a string", "camel"));
+console.log(makeCase("this is a string", "pascal"));
+console.log(makeCase("this is a string", "snake"));
+console.log(makeCase("this is a string", "kebab"));
+console.log(makeCase("this is a string", "title"));
+console.log(makeCase("this is a string", "vowel"));
+console.log(makeCase("this is a string", "consonant"));
+console.log(makeCase("this is a string", ["upper", "snake"]));
