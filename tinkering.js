@@ -496,6 +496,7 @@ recipes = [
 console.log(chooseRecipe(bakeryA, bakeryB, recipes));
 */
 
+/*
 const getLongMonthOptionOne = (date) => {
   const options = { month: "long" };
   const newDate = new Date(date);
@@ -551,3 +552,46 @@ const talkingCalendar = function (date) {
 console.log(talkingCalendar("2017/12/02"));
 console.log(talkingCalendar("2007/11/11"));
 console.log(talkingCalendar("1987/08/24"));
+*/
+
+const calculateChange = function (total, cash) {
+  let change = cash - total;
+  let changeObject = {};
+
+  while (change > 0) {
+    if (change / 2000 >= 1) {
+      changeObject.twentyDollar = Math.floor(change / 2000);
+      change = change % 2000;
+    } else if (change / 1000 >= 1) {
+      changeObject.tenDollar = Math.floor(change / 1000);
+      change = change % 1000;
+    } else if (change / 500 >= 1) {
+      changeObject.fiveDollar = Math.floor(change / 500);
+      change = change % 500;
+    } else if (change / 200 >= 1) {
+      changeObject.twoDollar = Math.floor(change / 200);
+      change = change % 200;
+    } else if (change / 100 >= 1) {
+      changeObject.oneDollar = Math.floor(change / 100);
+      change = change % 100;
+    } else if (change / 25 >= 1) {
+      changeObject.quarter = Math.floor(change / 25);
+      change = change % 25;
+    } else if (change / 10 >= 1) {
+      changeObject.dime = Math.floor(change / 10);
+      change = change % 10;
+    } else if (change / 5 >= 1) {
+      changeObject.nickel = Math.floor(change / 5);
+      change = change % 5;
+    } else {
+      changeObject.penny = change;
+      change = 0;
+    }
+  }
+
+  return changeObject;
+};
+
+console.log(calculateChange(1787, 2000));
+console.log(calculateChange(2623, 4000));
+console.log(calculateChange(501, 1000));
