@@ -803,6 +803,7 @@ console.log(
 );
 */
 
+/*
 //Replace coordinates with any other value 0-8
 let whiteQueen = [1, 5];
 let blackQueen = [2, 3];
@@ -888,3 +889,76 @@ const queenThreat = (board) => {
 };
 
 console.log(queenThreat(generatedBoard(whiteQueen, blackQueen)));
+*/
+
+const blocksAway = function (directions) {
+  let x = 0;
+  let y = 0;
+  let directionObj = [
+    {
+      direction: "north",
+      move: function (distance) {
+        y += distance;
+      },
+    },
+    {
+      direction: "east",
+      move: function (distance) {
+        x += distance;
+      },
+    },
+    {
+      direction: "south",
+      move: function (distance) {
+        y -= distance;
+      },
+    },
+    {
+      direction: "west",
+      move: function (distance) {
+        x -= distance;
+      },
+    },
+  ];
+
+  let directionIndex;
+  if (directions[0] === "right") {
+    directionIndex = 1;
+    directionObj[1].move(directions[1]);
+  } else if (directions[0] === "left") {
+    directionIndex = 0;
+    directionObj[0].move(directions[1]);
+  }
+
+  for (let i = 2; i < directions.length; i += 2) {
+    if (directions[i] === "right") {
+      directionIndex = directionIndex === 3 ? 0 : directionIndex + 1;
+      directionObj[directionIndex].move(directions[i + 1]);
+    } else if (directions[i] === "left") {
+      directionIndex = directionIndex === 0 ? 3 : directionIndex - 1;
+      directionObj[directionIndex].move(directions[i + 1]);
+    }
+  }
+
+  const finalDestination = { east: x, north: y };
+  return finalDestination;
+};
+
+console.log(blocksAway(["right", 2, "left", 3, "left", 1]));
+console.log(
+  blocksAway([
+    "left",
+    1,
+    "right",
+    1,
+    "left",
+    1,
+    "right",
+    1,
+    "left",
+    1,
+    "right",
+    1,
+  ])
+);
+console.log(blocksAway(["left", 3, "right", 1, "right", 3, "right", 1]));
